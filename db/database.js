@@ -1,5 +1,6 @@
 const { Pool } = require("pg");
 const { argv } = require("node:process");
+
 require("dotenv").config();
 
 const DB = {
@@ -23,3 +24,4 @@ const addUser = async ({ firstName, lastName, username, password }) => {
 };
 
 module.exports = { addUser };
+module.exports.pool = pool;
