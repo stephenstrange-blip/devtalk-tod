@@ -1,3 +1,3 @@
-exports.indexController = async (req, res) => {
+exports.controller = async (req, res) => {
   res.status(200).render("index");
 };

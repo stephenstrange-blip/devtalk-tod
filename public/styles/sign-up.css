@@ -1,0 +1,14 @@
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col {
+  flex-flow: column nowrap;
+}
+
+.flex-row {
+  flex-flow: row nowrap;
+}
+
