@@ -34,7 +34,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/", indexRouter);
+app.use(
+  "/",
+  (req, res, next) => {
+    console.log(req.user);
+    res.locals.currentUser = req.user;
+    next();
+  },
+  indexRouter
+);
 
 app.listen(8080, "localhost", () => {
   console.log(`Server listening at http://localhost:8080`);
