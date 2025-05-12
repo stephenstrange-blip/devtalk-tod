@@ -1,4 +1,5 @@
 exports.get = async (req, res) => {
-  if (!req.user) return res.status(200).render("index");
+  console.log(res.locals);
+  if (!res.locals.currentUser) return res.redirect("/");
   res.status(200).render("welcome");
 };
