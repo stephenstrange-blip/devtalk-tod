@@ -3,6 +3,7 @@ const path = require("node:path");
 
 const pgPool = require("./db/database").pool;
 const indexRouter = require("./routes/route");
+const middleware = require("./controllers/appController").middleware;
 
 const express = require("express");
 const passport = require("passport");
@@ -34,17 +35,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(
-  "/",
-  (req, res, next) => {
-    if (req.user) {
-      console.log("req.user.id", req.user.id);
-      res.locals.currentUser = req.user.id;
-    }
-    next();
-  },
-  indexRouter
-);
+app.use("/", middleware, indexRouter);
 
 app.listen(8080, "localhost", () => {
   console.log(`Server listening at http://localhost:8080`);
