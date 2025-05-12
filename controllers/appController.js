@@ -6,7 +6,6 @@ exports.middleware = async (req, res, next) => {
   }
 
   if (req.user) {
-    console.log("req.user.id", req.user.id);
     res.locals.currentUser = req.user.id;
     res.locals.currentRole = req.user.roles ? req.user.roles[0] : null;
   }
