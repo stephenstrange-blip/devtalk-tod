@@ -1,5 +1,6 @@
 const { Pool } = require("pg");
 const { argv } = require("node:process");
+const { get } = require("node:http");
 
 require("dotenv").config();
 
@@ -23,5 +24,10 @@ const addUser = async ({ firstName, lastName, username, password }) => {
   return result;
 };
 
-module.exports = { addUser };
+const getPassCode = async () => {
+  const result = await pool.query(" SELECT passcode FROM club WHERE id = 1");
+  return result;
+};
+
+module.exports = { addUser, getPassCode };
 module.exports.pool = pool;
