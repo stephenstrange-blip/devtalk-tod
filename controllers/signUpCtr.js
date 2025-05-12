@@ -18,7 +18,7 @@ exports.post = async (req, res) => {
       password: hashed,
     });
     console.log(result);
-    res.status(200).redirect("/");
+    res.status(200).redirect("/login");
   } catch (err) {
     console.log(err);
     res.status(400).redirect("/");
