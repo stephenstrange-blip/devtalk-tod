@@ -37,8 +37,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   "/",
   (req, res, next) => {
-    console.log("req.user", req.user);
-    res.locals.currentUser = req.user;
+    if (req.user) {
+      console.log("req.user.id", req.user.id);
+      res.locals.currentUser = req.user.id;
+    }
     next();
   },
   indexRouter
