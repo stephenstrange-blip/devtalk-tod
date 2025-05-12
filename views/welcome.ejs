@@ -14,5 +14,11 @@
   <a href="/logout">
     Log Out
   </a>
+
+  <% if (locals.role) { %>
+    <span>
+      Current Role: <h1><%= locals.role.name %> </h1>
+    </span>
+  <% } %>
 </body>
 </html>

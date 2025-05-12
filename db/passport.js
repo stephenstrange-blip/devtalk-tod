@@ -5,15 +5,20 @@ const LocalStrategy = require("passport-local").Strategy;
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
-    console.log(username, password);
     try {
+      if (!username || !password) {
+        return done(null, false, {
+          message: "Missing input",
+        });
+      }
+
       const { rows } = await pool.query(
         "SELECT * FROM users WHERE username = $1",
         [username]
       );
 
       const user = rows[0];
-      console.log("user in LocalStrategy", user);
+
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
@@ -22,6 +27,7 @@ passport.use(
       if (!match) {
         return done(null, false, { message: "Correct password" });
       }
+
       return done(null, user);
     } catch (err) {
       return done(err);
@@ -40,6 +46,15 @@ passport.deserializeUser(async (id, done) => {
       id,
     ]);
     const user = rows[0];
+
+
+    const result = await pool.query(
+      "SELECT r.id, r.name FROM roles AS r INNER JOIN user_roles AS ur ON ur.role_id = r.id WHERE ur.user_id = $1 ORDER BY ur.role_id",
+      [user.id]
+    );
+
+    user.roles = result.rows;
+    console.log("user.roles = ", user.roles);
 
     done(null, user);
   } catch (err) {
