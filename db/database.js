@@ -11,6 +11,7 @@ const DB = {
   NAME: process.env.DB_NAME,
 };
 
+
 const pool = new Pool({
   connectionString: `postgresql://${DB.USER}:${argv[2]}@${DB.HOST}:${DB.PORT}/${DB.NAME}`,
 });
@@ -25,9 +26,17 @@ const addUser = async ({ firstName, lastName, username, password }) => {
 };
 
 const getPassCode = async () => {
-  const result = await pool.query(" SELECT passcode FROM club WHERE id = 1");
+  const result = await pool.query("SELECT passcode FROM club WHERE id = 1");
   return result;
 };
 
-module.exports = { addUser, getPassCode };
+const updateRole = async (user_id, role_id) => {
+  const result = await pool.query("INSERT INTO user_roles VALUES ( $1, $2 );", [
+    user_id,
+    role_id,
+  ]);
+  return result;
+};
+
+module.exports = { addUser, getPassCode, updateRole };
 module.exports.pool = pool;
