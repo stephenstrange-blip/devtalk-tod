@@ -13,7 +13,7 @@ passport.use(
       );
 
       const user = rows[0];
-      console.log(user);
+      console.log("user in LocalStrategy", user);
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
@@ -30,6 +30,7 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
+  console.log("user in serializeUser is", user);
   done(null, user.id);
 });
 

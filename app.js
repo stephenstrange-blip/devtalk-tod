@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   "/",
   (req, res, next) => {
-    console.log(req.user);
+    console.log("req.user", req.user);
     res.locals.currentUser = req.user;
     next();
   },
