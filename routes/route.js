@@ -3,6 +3,7 @@ const indexController = require("../controllers/indexCtr").controller;
 const signUpController = require("../controllers/signUpCtr");
 const joinController = require("../controllers/joinCtr");
 const welcomeController = require("../controllers/welcomeCtr");
+const loginController = require("../controllers/loginCtr");
 const passport = require("passport");
 const LocalStrategy = require("../db/passport").LocalStrategy;
 
@@ -12,7 +13,12 @@ indexRouter.get("/", indexController);
 indexRouter.get("/sign-up", signUpController.get);
 indexRouter.post("/sign-up", signUpController.post);
 
-indexRouter.get("/login", (req, res) => res.render("log-in"));
+indexRouter.get("/welcome", welcomeController.get);
+
+indexRouter.get("/join", joinController.get);
+indexRouter.post("/join", joinController.post);
+
+indexRouter.get("/login", loginController.get);
 indexRouter.post(
   "/login",
   passport.authenticate("local", {
@@ -22,11 +28,6 @@ indexRouter.post(
     failureMessage: true,
   })
 );
-
-indexRouter.get("/welcome", welcomeController.get);
-
-indexRouter.get("/join", joinController.get);
-indexRouter.post("/join", joinController.post);
 
 indexRouter.get("/logout", (req, res, next) => {
   req.logout((err) => {
