@@ -10,15 +10,16 @@
 </head>
 <body>
   <h1>WELCOME!!!</h1>
-  <a href="/join">Join the devtalk club</a>
   <a href="/logout">
     Log Out
   </a>
 
-  <% if (locals.role) { %>
-    <span>
-      Current Role: <h1><%= locals.role.name %> </h1>
-    </span>
+  <% if (locals.role.id !== 1) { %>
+    <a href="/join">Join the devtalk club</a>
   <% } %>
+  <span>
+    Current Role: <h1><%= locals.role.name %> </h1>
+  </span>
+ 
 </body>
 </html>

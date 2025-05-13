@@ -1,7 +1,8 @@
 const { getPassCode, updateRole } = require("../db/database");
 
 exports.get = async (req, res) => {
-  if (!res.local.currentUser) return redirect("/index");
+  if (!res.locals.currentUser) return res.redirect("/index");
+  if (res.locals.currentRole.id === 1) return res.redirect("/welcome");
   res.render("join");
 };
 
