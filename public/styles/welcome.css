@@ -1,18 +1,26 @@
 :root {
   background-color: #3a2828;
   color: wheat;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
-html, body, .body_container {
+html,
+body,
+.body_container {
   width: 100%;
   height: 100%;
 }
 
-.flex-right {
+.flex-end {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.flex-start {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .flex-center {
@@ -35,6 +43,10 @@ html, body, .body_container {
   position: relative;
 }
 
+header > div:last-of-type {
+  width: fit-content;
+}
+
 a {
   text-decoration: none;
 }
@@ -50,29 +62,63 @@ a#join:hover {
   text-decoration: underline;
 }
 
-a > div, button {
+a > div,
+button {
   color: wheat;
-  padding: .5rem 1rem;
-  border: .5px solid #614d4d;
-  width: min(8rem, 300px);
+  padding: 0.5rem 1rem;
+  border: 0.5px solid #614d4d;
+  min-width: 8rem;
   text-align: center;
 }
 
-a > div:hover, button:hover {
+a > div:hover,
+button:hover {
   color: #3a2828;
   background-color: wheat;
-  transition-duration: .5s;
+  transition-duration: 0.5s;
 }
 
 h1 {
   font-size: 50px;
 }
 
-span {
+header > span {
   position: absolute;
   top: 0px;
   right: 0px;
   gap: 1rem;
   padding: 1rem;
   font-size: 10px;
+}
+
+main {
+  margin-block-start: 5rem;
+  padding-block-start: 1rem;
+  border-top: 5px dotted rgb(209, 132, 87);
+}
+
+.message {
+  cursor: pointer;
+  transition-duration: .3s;
+}
+
+.message:hover {
+  color: rgb(134, 119, 91);
+}
+
+.message > h2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; 
+  width: 80%;
+}
+
+main span {
+  padding-top: 5px;
+  font-size: 12px;
+  gap: .5rem;
+}
+
+main span > h4 {
+  font-weight: 100;
 }
