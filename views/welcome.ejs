@@ -9,17 +9,17 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>WELCOME!!!</h1>
-  <a href="/logout">
-    Log Out
-  </a>
-
-  <% if (locals.role.id !== 1) { %>
-    <a href="/join">Join the devtalk club</a>
-  <% } %>
-  <span>
-    Current Role: <h1><%= locals.role.name %> </h1>
-  </span>
- 
+  <div class="body_container">
+    <h1>WELCOME!</h1>
+    <span class="flex-center flex-row">
+      <i>Current Role:</i> <h2> <%= locals.role.name %> </h2>
+    </span>
+    <% if (locals.role.id !== 1) { %>
+      <a id="join" href="/join">Join the devtalk club</a>
+    <% } %>
+    <a href="/logout">
+        <div>Log Out</div>
+    </a>
+  </div>
 </body>
 </html>
