@@ -1,4 +1,4 @@
-const { addUser } = require("../db/database");
+const { addUser, updateRole } = require("../db/database");
 const bcrypt = require("bcrypt");
 
 exports.get = async (req, res) => {
@@ -18,7 +18,10 @@ exports.post = async (req, res) => {
       username: userName,
       password: hashed,
     });
-    console.log(result);
+
+    // TODO: REPLACE 4 with the basic level role_id
+    const _result = await updateRole(result.rows[0].id, 4);
+    console.log(result, _result);
     res.status(200).redirect("/login");
   } catch (err) {
     console.log(err);

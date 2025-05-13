@@ -3,7 +3,8 @@ const { argv } = require("node:process");
 const bcrypt = require("bcrypt");
 
 const QUERIES = {
-  CREATE_ADMIN: "INSERT INTO club (name, passcode) VALUES ( $1, $2 ) ",
+  CREATE_CLUB: "INSERT INTO club (name, passcode) VALUES ( $1, $2 ) ",
+  CREATE_ADMIN_ROLE: "INSERT INTO roles (name) VALUES ('Admin'), ('User')",
 };
 
 const client = new Client({
@@ -16,8 +17,7 @@ async function initClub() {
 
   try {
     await client.connect();
-    await client.query(QUERIES.CREATE_ADMIN, ["devtalk", hashed]);
-    await client.end();
+    await client.query(QUERIES.CREATE_CLUB, ["devtalk", hashed]);
     console.log("Successfully added default club credentials");
   } catch (err) {
     console.log(err);
@@ -26,4 +26,19 @@ async function initClub() {
   }
 }
 
+async function initRoles() {
+  console.log("Adding default roles");
+
+  try {
+    await client.connect();
+    await client.query(QUERIES.CREATE_ADMIN_ROLE);
+    console.log("Successfully added default roles");
+  } catch (err) {
+    console.log(err);
+  } finally {
+    client.end();
+  }
+}
+
 initClub();
+initRoles();
