@@ -10,15 +10,19 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="/join" method="POST">
-    <label for="passcode"> Input passcode: 
-      <input type="text" name="passcode" id="passcode" placeholder="Hint: It's right infront of you">
-    </label>
-    <button type="submit">Submit</button>
-    <a href="/welcome">
-      <div>Back</div>
-    </a>
-  </form>
+  <div class="body_container flex-center flex-col">
+    <form action="/join" method="POST" class="flex-center flex-col">
+      <label for="passcode"> Input passcode:
+        <input type="text" name="passcode" id="passcode" placeholder="Hint: It's right infront of you">
+      </label>
+      <div class="flex-center flex-row">
+        <button type="submit">Submit</button>
+        <a href="/welcome">
+          <div>Back</div>
+        </a>
+      </div>
+    </form>
+  </div>
   <h1> <%= locals.message ? locals.message : '' %></h1>
 </body>
 </html>
