@@ -2,6 +2,7 @@ const { addUser } = require("../db/database");
 const bcrypt = require("bcrypt");
 
 exports.get = async (req, res) => {
+  if (res.locals.currentUser) return res.redirect("/welcome");
   res.status(200).render("sign-up");
 };
 
