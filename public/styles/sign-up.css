@@ -58,3 +58,11 @@ label {
 input {
   min-width: 300px;
 }
+
+form {
+  gap: 1rem;
+}
+
+form > div:last-of-type {
+  margin-block-start: 3rem;
+}
