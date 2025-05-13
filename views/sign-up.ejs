@@ -9,24 +9,30 @@
   <title>DevTalk</title>
 </head>
 <body>
-  <form action="/sign-up" class="flex-center flex-col" onsubmit="return confirm('Are you sure???')" method="POST">
-    <caption>Sign-Up</caption>
-    <label class="flex-center flex-row _in_between" for="userName">Username: 
-      <input type="text" name="userName" id="userName" placeholder="Username or email address" required>
-    </label>
-    <label class="flex-center flex-row" for="firstName">First name: 
-      <input type="text" name="firstName" id="firstName" required>
-    </label>
-    <label class="flex-center flex-row" for="lastName">Last name:
-      <input type="text" name="lastName" id="lastName" required>
-    </label>
-    <label class="flex-center flex-row" for="password">Password: 
-      <input type="password" name="password" id="password" required>
-    </label>
-    <button type="submit">Confirm</button>
-    <a href="/">
-      <div>Cancel</div>
-    </a>
-  </form>
+  <div class="body_container flex-center">
+    <form action="/sign-up" class="flex-center flex-col" onsubmit="return confirm('Are you sure???')" method="POST">
+      
+      <label class="flex-center flex-col" for="userName">Username:
+        <input type="text" name="userName" id="userName" placeholder="Username or email address" required>
+      </label>
+      <label class="flex-center flex-col" for="firstName">First name:
+        <input type="text" name="firstName" id="firstName" required>
+      </label>
+      <label class="flex-center flex-col" for="lastName">Last name:
+        <input type="text" name="lastName" id="lastName" required>
+      </label>
+      <label class="flex-center flex-col" for="password">Password:
+        <input type="password" name="password" id="password" required>
+      </label>
+
+
+      <div class="flex-center flex-row">
+        <a href="/">
+          <div>Cancel</div>
+        </a>
+        <button type="submit">Confirm</button>
+      </div>
+    </form>
+  </div>
 </body>
 </html>
