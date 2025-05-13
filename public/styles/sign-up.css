@@ -55,14 +55,29 @@ label {
   text-align:start;
 }
 
-input {
-  min-width: 300px;
-}
-
 form {
   gap: 1rem;
 }
 
 form > div:last-of-type {
   margin-block-start: 3rem;
+}
+
+input {
+  min-width: 300px;
+  background-color: transparent;
+  border: none;
+  color: wheat;
+}
+
+input:hover {
+  background-color: #634a4a;
+}
+
+input::placeholder {
+  color: rgba(192, 180, 157, 0.651);
+}
+
+input:focus-within {
+  border-bottom: .5px solid rgba(192, 180, 157, 0.651);
 }
