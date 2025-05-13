@@ -100,6 +100,7 @@ main {
 .message {
   cursor: pointer;
   transition-duration: .3s;
+  padding-bottom: 1.5rem;
 }
 
 .message:hover {
@@ -122,3 +123,4 @@ main span {
 main span > h4 {
   font-weight: 100;
 }
+

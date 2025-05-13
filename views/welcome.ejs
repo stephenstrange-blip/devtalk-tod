@@ -10,16 +10,54 @@
 </head>
 <body>
   <div class="body_container">
-    <h1>WELCOME!</h1>
-    <span class="flex-center flex-row">
-      <i>Current Role:</i> <h2> <%= locals.role.name %> </h2>
-    </span>
-    <% if (locals.role.id !== 1) { %>
-      <a id="join" href="/join">Join the devtalk club</a>
-    <% } %>
-    <a href="/logout">
-        <div>Log Out</div>
-    </a>
+    <header>
+      <h1>WELCOME!</h1>
+      <span class="flex-center flex-row">
+        <i>Current Role:</i> <h2> <%= locals.role.name %> </h2>
+      </span>
+      <% if (locals.role.id !== 1) { %>
+        <a id="join" href="/join">Join the devtalk club</a>
+      <% } %>
+      <div class="flex-start flex-row">
+        <a href="/logout">
+          <div>Log Out</div>
+        </a>
+        <a href="/post-message">
+          <div>Add Message</div>
+        </a>
+      </div>
+    </header>
+    <main>
+      <section>
+        <% if (locals.messages) { %>
+          <%  locals.messages.forEach(message => { %>
+            <div data-msg="<%=message.message_id%>" class="message flex-start flex-col">
+              <h2><%=message.title %></h2>
+            <span class="flex-start flex-row">
+              <i><%=message.firstname %> <%= message.lastname %></i>
+              <h4><%=message.date.day_name %> <%=message.date.Month %> <%=message.date.Year %></h4>
+            </span>
+          </div>
+          <% }) %>
+        <%} %>
+          <div data-msg='1' class="message flex-start flex-col">
+            <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime possimus obcaecati inventore temporibus nostrum architecto illo nam, quam non eius quidem eum? Dolore vel nobis illo laudantium, atque quo illum?</h2>
+          <span class="flex-start flex-row">
+            <i>Author</i>
+            <h4> Tuesday  May 2026</h4>
+          </span>
+        </div>
+      </section>
+    </main>
   </div>
+
+  <script>
+    const messages = document.querySelectorAll(".message");
+    messages.forEach(message => {
+      message.addEventListener("click", () => {
+        location.href = `/message/${message.dataset.msg}`
+      })
+    })
+  </script>
 </body>
 </html>

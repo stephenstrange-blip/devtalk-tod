@@ -20,6 +20,7 @@ indexRouter.get("/join", joinController.get);
 indexRouter.post("/join", joinController.post);
 
 indexRouter.get("/post-message", messageController.get);
+indexRouter.post("/post-message", messageController.post);
 
 indexRouter.get("/login", loginController.get);
 indexRouter.post(
